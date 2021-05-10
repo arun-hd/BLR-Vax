@@ -32,7 +32,7 @@ def checkResponse(response,district_id,date):
 					dateAvailable = time.strptime(s['date'], "%d-%m-%Y")
 					#print(dateAvailable)
 					if(dateAvailable > dateFrom):
-						messageString = str(s['available_capacity']) + " slots available in " + locDef[district_id]+ ' -- ' + center['name'] + ' with zipcode : '+str(center['pincode'])+ " for date "+ s['date']
+						messageString = 'Above '+str(s['min_age_limit'])+ ' only --' + str(center['fee_type']) + '--'+ str(s['available_capacity']) + " slots available in " + locDef[district_id]+ ' -- ' + center['name'] + ' with zipcode : '+str(center['pincode'])+ " for date "+ s['date']
 						#print(messageString)
 						sendMessage(messageString)
 
