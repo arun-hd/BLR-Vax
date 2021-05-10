@@ -21,7 +21,7 @@ def checkAvailability(district_id,date):
 	checkResponse(response,district_id,date)
 
 def checkResponse(response,district_id,date):
-	dateFrom = time.strptime("08-05-2021", "%d-%m-%Y")
+	dateFrom = time.strptime("09-05-2021", "%d-%m-%Y")
 	json_response = response.json()
 	centers = json_response['centers']
 	for center in centers:
