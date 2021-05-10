@@ -10,22 +10,27 @@ def sendMessage(avaialbility):
 def checkAvailability(district_id,date):
 	dataURL = 'https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict'
 	PARAMS = {'district_id':district_id,'date':date}
-	response = requests.get(url = dataURL, params = PARAMS)
+	headers = {
+ 		'Host': 'cdn-api.co-vin.in',
+ 		'Accept': 'application/json',
+ 		'Accept-Encoding': 'application/json',
+ 		'Connection': 'keep-alive',
+ 		'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36'
+	}
+	response = requests.get(url = dataURL, params = PARAMS, headers= headers)
 	checkResponse(response,district_id,date)
 	
 def checkResponse(response,district_id,date):
-	#print(response)
-	#dict = open("data.json")
-	#f = open('data.json','r')
-	#dict = json.load(f)
-	centers = response['centers']
+	json_response = response.json()
+	centers = json_response['centers']
 	for center in centers:
 		session = center['sessions']
 		for s in session:
 			if(s['vaccine'] == 'COVAXIN'):
 				if(s['available_capacity'] > 0):
 					messageString = " Available in " + locDef[district_id]+ ' -- ' + center['name'] + " for date "+ s['date']
-					sendMessage(messageString)
+					print(messageString)
+					#sendMessage(messageString)
 
 
 locations = [294,265]
