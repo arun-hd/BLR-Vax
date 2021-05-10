@@ -29,8 +29,8 @@ def checkResponse(response,district_id,date):
 			if(s['vaccine'] == 'COVAXIN'):
 				if(s['available_capacity'] > 0):
 					messageString = " Available in " + locDef[district_id]+ ' -- ' + center['name'] + " for date "+ s['date']
-					print(messageString)
-					#sendMessage(messageString)
+					#print(messageString)
+					sendMessage(messageString)
 
 
 locations = [294,265]
