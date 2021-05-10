@@ -28,7 +28,7 @@ def checkResponse(response,district_id,date):
 		for s in session:
 			if(s['vaccine'] == 'COVAXIN'):
 				if(s['available_capacity'] > 0):
-					messageString = " Available in " + locDef[district_id]+ ' -- ' + center['name'] + " for date "+ s['date']
+					messageString = " Available in " + locDef[district_id]+ ' -- ' + center['name'] + ' with zipcode : '+center['pincode']+ " for date "+ s['date']
 					#print(messageString)
 					sendMessage(messageString)
 
